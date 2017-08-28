@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Blog</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
+  </head>
+
+  <body>
+    <h1>My Blog</h1>
+
+    <br />
+    <p class="flash"><%= flash.notice %></p>
+    <%= yield %>
+  </body>
+</html>
