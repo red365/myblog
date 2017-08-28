@@ -1,7 +1,4 @@
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: "red365",
-                               password: "jobsite_log1n",
-                               except: :show
   
   def index
     @articles = Article.all
