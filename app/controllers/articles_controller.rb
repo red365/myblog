@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: "red365",
-                               password: "jobsite_log1n",
+  http_basic_authenticate_with name: "admin",
+                               password: "password",
                                except: :show
   
   def index
