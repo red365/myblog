@@ -6,6 +6,11 @@
 <%= @article.text %>
 </p>
 <br />
+<p>
+  <% if @article.image.exists? %>
+    <%= image_tag @article.image.url %><br/>
+  <% end %>
+</p>  
 
 <h2>Comments (<%= @article.comments.size %>)</h2>
 <% @article.comments.each do |comment| %>
