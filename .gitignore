@@ -17,7 +17,12 @@
 !/log/.keep
 !/tmp/.keep
 
+# Ignore uploaded files.
+/public/system/
+
 /node_modules
 /yarn-error.log
+
+
 
 .byebug_history
