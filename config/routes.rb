@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
   resources :authors
   resources :tags
-  root 'default#show'
+  root 'articles#show'
 
   resources :author_sessions, only: [ :new, :create, :destroy ]
 

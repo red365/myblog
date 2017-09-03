@@ -37,7 +37,14 @@ class ArticlesController < ApplicationController
  end
 
  def show
-   @article = Article.find(params[:id])
+   if params[:id]
+     @article = Article.find(params[:id])
+   else
+     @articles = Article.all
+     if @articles.last
+      @article = @articles.last
+     end
+   end
  end
 
  def destroy
