@@ -1,7 +1,5 @@
 class CommentsController < ApplicationController
-  http_basic_authenticate_with name: "red365",
-                               password: "jobsite_log1n",
-                               only: :destroy
+  before_action :require_login, except: [:create]
                                  
   def create
     date = Time.now.year.to_s + "-" + Time.now.month.to_s + "-" + Time.now.day.to_s

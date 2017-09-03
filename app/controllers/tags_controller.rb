@@ -1,7 +1,5 @@
 class TagsController < ApplicationController
-  http_basic_authenticate_with name: "admin",
-                               password: "password",
-                               except: [:index, :show]
+  before_action :require_login, only: [:destroy]
   
   def show
     @tag = Tag.find(params[:id])

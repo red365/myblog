@@ -2,8 +2,11 @@
 
 <% @tags.each do |tag| %>
   <p>
-    <%= link_to tag.name, tag_path(tag.id) %> <%= link_to 'Delete', tag_path(tag.id),
-						 method: :delete,
-						 data: { confirm: 'Are you sure?' } %>
+    <%= link_to tag.name, tag_path(tag.id) %>
+    <% if logged_in? %>
+      <%= link_to 'Delete', tag_path(tag.id),
+	  method: :delete,
+	  data: { confirm: 'Are you sure?' } %>
+    <% end %>
   </p>
   <% end %>
