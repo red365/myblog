@@ -1,15 +1,19 @@
-<p>
-  <%= comment.date %> <strong><%= comment.commenter %></strong>
-</p>
- 
-<p>
-  <%= comment.body %>
-</p>
+<% if comment.id %>
 
-<p>
-  <% if logged_in? %>
-  <%= link_to 'Destroy Comment', [comment.article, comment],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
-  <% end %>
-</p>
+  <p>
+    <%= comment.date %> <strong><%= comment.commenter %></strong>
+  </p>
+ 
+  <p>
+    <%= comment.body %>
+  </p>
+
+  <p>
+    <% if logged_in? %>
+      <%= link_to 'Destroy Comment', [comment.article, comment],
+          method: :delete,
+          data: { confirm: 'Are you sure?' } %>
+    <% end %>
+
+  </p>
+<% end %>

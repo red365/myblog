@@ -28,15 +28,14 @@
       <%= link_to 'Article List', articles_path %>
     <% end %>
 
-
-<h2>Comments (<%= @article.comments.size %>) </h2>
-
-<%= render @article.comments %>
-
 <h2>Add a comment:</h2>
 
   <%= render 'comments/form' %>
 
+
+<h2>Comments: (<%= @article.comments.size - 1 %>) </h2>
+
+  <%= render @article.comments %>
 
 <% else %>
   <p>
