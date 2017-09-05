@@ -1,0 +1,10 @@
+
+<% if @articles %>
+  <h3>Categories</h3>
+
+  <ul>
+    <% @tags.each do |tag| %>
+      <li><%= link_to tag.name, tag_path(tag.id) %> (<%= tag.articles.count %>)</li>
+    <% end %>   
+  </ul>
+<% end %>

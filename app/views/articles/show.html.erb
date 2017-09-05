@@ -35,10 +35,13 @@
 
 <h2>Comments: (<%= @article.comments.size - 1 %>) </h2>
 
-  <%= render @article.comments %>
+<%= render @article.comments %>
+
 
 <% else %>
   <p>
     There are no posts to display, please try again soon.
   </p>
 <% end %>
+
+<%= render 'layouts/categories' %>

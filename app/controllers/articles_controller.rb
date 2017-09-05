@@ -37,6 +37,7 @@ class ArticlesController < ApplicationController
  end
 
  def show
+   @tags = Tag.all
    if params[:id]
      @article = Article.find(params[:id])
    else
