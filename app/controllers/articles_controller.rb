@@ -40,10 +40,14 @@ class ArticlesController < ApplicationController
    @tags = Tag.all
    if params[:id]
      @article = Article.find(params[:id])
+     @article.record_article_view
+     @article.save
    else
      @articles = Article.all
      if @articles.last
-      @article = @articles.last
+       @article = @articles.last
+       @article.record_article_view
+       @article.save
      end
    end
  end
