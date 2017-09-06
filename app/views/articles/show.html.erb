@@ -46,3 +46,6 @@
 <% end %>
 
 <%= render 'layouts/categories' %>
+<% if @articles.size > 2 %>
+  <%= render 'layouts/popular' %>
+<% end %>

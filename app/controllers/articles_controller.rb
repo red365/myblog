@@ -37,18 +37,21 @@ class ArticlesController < ApplicationController
  end
 
  def show
+   @articles = Article.all
    @tags = Tag.all
    if params[:id]
      @article = Article.find(params[:id])
      @article.record_article_view
      @article.save
    else
-     @articles = Article.all
      if @articles.last
        @article = @articles.last
        @article.record_article_view
        @article.save
      end
+   end
+   if @articles.size > 2
+     @top_three = get_most_viewed_articles
    end
  end
 
@@ -64,5 +67,9 @@ class ArticlesController < ApplicationController
    params.require(:article).permit(:title, :text, :tag_list, :image)
  end
 
+ def get_most_viewed_articles
+   @top_three = @articles.sort_by &:view_count
+   @top_three = @top_three.reverse[0..2]
+ end
 end
                                                                    
