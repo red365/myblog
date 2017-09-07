@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
   
   def index
     @articles = Article.all
+    @authors = Author.all
   end
 
   def new
@@ -15,9 +16,9 @@ class ArticlesController < ApplicationController
  end
 
  def create
-   @article = Article.new(article_params)
+   @author = Author.find(current_user.id)
+   @article = @author.articles.new(article_params)
    @article.date = Time.now.year.to_s + "-" + Time.now.month.to_s + "-" + Time.now.day.to_s
-
    if @article.save
      redirect_to @article
    else
@@ -41,6 +42,7 @@ class ArticlesController < ApplicationController
    @tags = Tag.all
    if params[:id]
      @article = Article.find(params[:id])
+     @author = @article.author
      @article.record_article_view
      @article.save
    else

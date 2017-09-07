@@ -4,6 +4,9 @@
 <p>
   <%= @article.date %> <strong><%= @article.title %></strong>
 </p>
+<p>
+  By: <%= @author.username %>
+</p>
  
 <p>
   <%= @article.text %>
@@ -43,7 +46,11 @@
   <p>
     There are no posts to display, please try again soon.
   </p>
-<% end %>
+  <% end %>
+
+  <br />
+  <br />
+
 
 <%= render 'layouts/categories' %>
 <% if @articles.size > 2 %>
