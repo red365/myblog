@@ -21,6 +21,10 @@ class AuthorsController < ApplicationController
 
   # GET /authors/1/edit
   def edit
+    @author = Author.find(params[:id])
+    if @author.id != current_user.id and current_user.id != 1
+      redirect_to authors_path
+    end
   end
 
   # POST /authors

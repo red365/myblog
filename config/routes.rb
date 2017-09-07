@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
   end
-  resources :authors
+  resources :authors,       except: [ :destroy ]
   resources :tags
   root 'articles#show'
 

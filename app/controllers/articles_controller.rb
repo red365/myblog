@@ -5,6 +5,9 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all
     @authors = Author.all
+    if current_user.id == 1
+      @is_admin = true
+    end
   end
 
   def new
@@ -13,7 +16,7 @@ class ArticlesController < ApplicationController
 
  def edit
    @article = Article.find(params[:id])
-   if @article.author_id != current_user.id
+   if @article.author_id != current_user.id and current_user.id != 1
      redirect_to articles_path
    end
  
@@ -64,7 +67,7 @@ class ArticlesController < ApplicationController
 
  def destroy
    @article = Article.find(params[:id])
-   if @article.author_id != current_user.id
+   if @article.author_id != current_user.id and current_user.id != 1
      redirect_to articles_path
    else
      @article.destroy
