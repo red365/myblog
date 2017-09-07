@@ -13,6 +13,10 @@ class ArticlesController < ApplicationController
 
  def edit
    @article = Article.find(params[:id])
+   if @article.author_id != current_user.id
+     redirect_to articles_path
+   end
+ 
  end
 
  def create
@@ -48,6 +52,7 @@ class ArticlesController < ApplicationController
    else
      if @articles.last
        @article = @articles.last
+       @author = @article.author
        @article.record_article_view
        @article.save
      end
@@ -59,9 +64,12 @@ class ArticlesController < ApplicationController
 
  def destroy
    @article = Article.find(params[:id])
-   @article.destroy
-
-   redirect_to articles_path
+   if @article.author_id != current_user.id
+     redirect_to articles_path
+   else
+     @article.destroy
+     redirect_to articles_path
+   end
  end
 
  private
